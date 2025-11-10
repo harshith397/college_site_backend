@@ -1,0 +1,129 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Virtual envs / env files
+.env
+.env.*
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Database / local storage
+*.sqlite3
+*.db
+*.db-journal
+instance/
+.local/
+
+# Logs
+*.log
+logs/
+*.pid
+
+# Secrets / keys
+*.pem
+*.key
+credentials.json
+
+# Node
+node_modules/
+
+# Docker overrides / local configs
+docker-compose.override.yml
+
+# Misc
+celerybeat-schedule
+*.iml
+*.class
+*.jar
+```// filepath: d:\college_site\.gitignore
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Virtual envs / env files
+.env
+.env.*
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Database / local storage
+*.sqlite3
+*.db
+*.db-journal
+instance/
+.local/
+
+# Logs
+*.log
+logs/
+*.pid
+
+# Secrets / keys
+*.pem
+*.key
+credentials.json
+
+# Node
+node_modules/
+
+# Docker overrides / local configs
+docker-compose.override.yml
+
+# Misc
+celerybeat-schedule
+*.iml
+*.class
+*.jar
