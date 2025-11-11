@@ -45,13 +45,14 @@ async def fetch_dashboard_data(html: str,session_id: str) -> dict:
         print(f"⏱️  HTTP fetching (parallel): {(time.perf_counter() - start)*1000:.2f}ms")
 
     start = time.perf_counter()
-    marks_data = parse_marks_table(marks_response.text)
+    marks_data,gender = parse_marks_table(marks_response.text)
     sub_attendance_data,total_attendance_data,img_url=get_attendance_subjects(attendance_response.text)
     print(f"⏱️  Response parsing: {(time.perf_counter() - start)*1000:.2f}ms")
     
     #pprint(sub_attendance_data)
     #pprint(total_attendance_data)
     print(f"⏱️  TOTAL fetch_dashboard_data: {(time.perf_counter() - start_total)*1000:.2f}ms")
+    student_dashboard["Gender"]=gender
     return {"dashboardData":{
         "DashBoard" : student_dashboard,
         "Current Sem" : current_sem,

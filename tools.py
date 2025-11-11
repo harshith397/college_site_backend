@@ -311,6 +311,13 @@ def get_current_sem(html: str) -> Dict[str, str]:
 
 def parse_marks_table(html: str) -> dict:
     soup = BeautifulSoup(html, 'lxml')
+    gender_td = soup.find("td", string=lambda text: text and "Gender" in text)
+    gender = "-"
+#   Move two <td> forward to get the value
+    if gender_td:
+        gender_value_td = gender_td.find_next_sibling("td").find_next_sibling("td")
+        gender = gender_value_td.get_text(strip=True).replace(":", "").replace("\xa0", "")
+    
     tables = soup.find_all('table', class_='tableclass')
     if len(tables) < 2:
         raise ValueError("Less than two tables with class='tableclass' found.")
@@ -485,7 +492,7 @@ def parse_marks_table(html: str) -> dict:
     return {
         "subjects": subjects,
         "summary": summary
-    }
+    },gender
 
 
 async def fetch_login_hidden_fields() -> Dict[str, Any]:
@@ -550,3 +557,15 @@ async def fetch_login_hidden_fields() -> Dict[str, Any]:
             message="Unexpected error while parsing ERP login page.",
             detail=str(e),
         )
+    
+def get_gender(html : str):
+    soup = BeautifulSoup(html, "xlml")
+    gender_td = soup.find("td", string=lambda text: text and "Gender" in text)
+
+# Move two <td> forward to get the value
+    if gender_td:
+        gender_value_td = gender_td.find_next_sibling("td").find_next_sibling("td")
+        gender = gender_value_td.get_text(strip=True).replace(":", "").replace("\xa0", "")
+        return gender
+    else:
+        return None
