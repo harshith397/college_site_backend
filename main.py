@@ -308,7 +308,7 @@ async def dashboard(req: DashboardRequest):
     
     # Cache the data
     start = time.perf_counter()
-    await set_cached_data(app.state.redis, redis_key, dashboard_data, ttl=3600)
+    await set_cached_data(app.state.redis, redis_key, dashboard_data, ttl=600)
     print(f"⏱️  Redis write: {(time.perf_counter() - start)*1000:.2f}ms")
     print(f"⏱️  TOTAL (cache miss): {(time.perf_counter() - start_total)*1000:.2f}ms")
 
