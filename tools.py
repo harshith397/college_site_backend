@@ -558,14 +558,3 @@ async def fetch_login_hidden_fields() -> Dict[str, Any]:
             detail=str(e),
         )
     
-def get_gender(html : str):
-    soup = BeautifulSoup(html, "xlml")
-    gender_td = soup.find("td", string=lambda text: text and "Gender" in text)
-
-# Move two <td> forward to get the value
-    if gender_td:
-        gender_value_td = gender_td.find_next_sibling("td").find_next_sibling("td")
-        gender = gender_value_td.get_text(strip=True).replace(":", "").replace("\xa0", "")
-        return gender
-    else:
-        return None
