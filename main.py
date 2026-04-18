@@ -68,6 +68,7 @@ async def lifespan(app: FastAPI):
 # ========================
 app = FastAPI(
     title="College Site Proxy API",
+    lifespan=lifespan,
     docs_url="/docs" if ENVIRONMENT == "development" else None,
     redoc_url=None
 )
