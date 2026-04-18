@@ -49,19 +49,7 @@ async def close_db_pool():
 # ========================
 # Lifespan Management
 # ========================
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Startup
-    await init_db_pool()
-    app.state.redis = await init_redis_connection(REDIS_URL)
-    print("✅ Redis connected on startup")
-    
-    yield  # Application runs here
-    
-    # Shutdown
-    await app.state.redis.aclose()
-    await close_db_pool()
-    print("🛑 All connections closed")
+
 
 # ========================
 # FastAPI App
