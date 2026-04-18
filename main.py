@@ -56,7 +56,6 @@ async def close_db_pool():
 # ========================
 app = FastAPI(
     title="College Site Proxy API",
-    lifespan=lifespan,
     docs_url="/docs" if ENVIRONMENT == "development" else None,
     redoc_url=None
 )
