@@ -159,6 +159,7 @@ def find_schema_for_dept(dept_param: str) -> Optional[str]:
 
 @app.get("/")
 async def root():
+    global COUNT_REQ
     """Health check endpoint"""
     return {"status": "ok", "message": "College API is running","No.of Requests":COUNT_REQ}
 
@@ -231,6 +232,7 @@ async def logout(req: LogoutRequest):
 @app.post("/login", response_model=LoginResponse)
 async def login(req: LoginRequest):
     """Login user with credentials"""
+    global COUNT_REQ
     payload = await fetch_login_hidden_fields()  # ✅ Now async
     payload.update({
         "txt_HTNO": req.userid,
