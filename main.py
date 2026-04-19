@@ -23,6 +23,8 @@ ENVIRONMENT = os.getenv("ENVIRONMENT", "production")
 # CORS origins - restrict in production
 CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
 
+COUNT_REQ=0
+
 # ========================
 # Database Pool (Async)
 # ========================
@@ -158,7 +160,7 @@ def find_schema_for_dept(dept_param: str) -> Optional[str]:
 @app.get("/")
 async def root():
     """Health check endpoint"""
-    return {"status": "ok", "message": "College API is running"}
+    return {"status": "ok", "message": "College API is running","No.of Requests":COUNT_REQ}
 
 @app.get("/health")
 async def health():
@@ -251,6 +253,7 @@ async def login(req: LoginRequest):
     elif "Ivalid Userid or Password" in html_text:
         return {"success": False, "detail": "credentials invalid"}
     else:
+        COUNT_REQ=COUNT_REQ+1
         return {"success": True, "detail": "Login Successful"}
 
 @app.get("/captcha")
